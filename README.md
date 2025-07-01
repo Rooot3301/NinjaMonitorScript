@@ -16,5 +16,5 @@ Fonctionnalités :
 Téléchargez et exécutez le script suivant sur vos postes :
 
 ```powershell
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/<ton_user>/NinjaMonitorScript/main/monitor.ps1" -OutFile "C:\ProgramData\NinjaAgentMonitor\monitor.ps1"
+Invoke-WebRequest -Uri "https://github.com/Rooot3301/NinjaMonitorScript/blob/main/monitor.ps1" -OutFile "C:\ProgramData\NinjaAgentMonitor\monitor.ps1"
 
