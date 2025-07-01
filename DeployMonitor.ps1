@@ -11,15 +11,16 @@ Invoke-WebRequest -Uri $scriptUrl -OutFile $localScript -UseBasicParsing
 
 $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-ExecutionPolicy Bypass -File `"$localScript`""
 
-# ✅ Correction ici : durée de répétition fixée à 365 jours
+# ✅ Correction ici : durée réaliste de répétition (365 jours)
 $trigger = New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(1) `
     -RepetitionInterval (New-TimeSpan -Minutes 5) `
     -RepetitionDuration (New-TimeSpan -Days 365)
 
 $principal = New-ScheduledTaskPrincipal -UserId "SYSTEM" -LogonType ServiceAccount -RunLevel Highest
 
-# (Optionnel) Supprimer la tâche précédente si elle existe
+# Nettoyage (au cas où la tâche existe déjà)
 Unregister-ScheduledTask -TaskName $taskName -Confirm:$false -ErrorAction SilentlyContinue
 
 Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger -Principal $principal -Force
+
 
