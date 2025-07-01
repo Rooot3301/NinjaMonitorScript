@@ -16,6 +16,6 @@ Fonctionnalités :
 Téléchargez et exécutez le script suivant sur vos postes :
 
 ```powershell
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Rooot3301/NinjaMonitorScript/main/monitor.ps1
-" -OutFile "C:\ProgramData\NinjaAgentMonitor\monitor.ps1"
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Rooot3301/NinjaMonitorScript/main/DeployMonitor.ps1" -OutFile "$env:TEMP\DeployMonitor.ps1"
+powershell.exe -ExecutionPolicy Bypass -File "$env:TEMP\DeployMonitor.ps1"
 
